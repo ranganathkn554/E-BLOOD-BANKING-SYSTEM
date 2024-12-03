@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank System</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffcccc, #ffe6e6);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #cc0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        header .news {
+            font-size: 1rem;
+            color: #ffe6e6;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        header .news span {
+            display: inline-block;
+            animation: moveText 10s linear infinite;
+        }
+
+        @keyframes moveText {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #cc0000;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #ff6666;
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #13ce02;
+        }
+
+        .toggle-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: underline;
+            color: #cc0000;
+            cursor: pointer;
+        }
+about:blank#blocked
+        .toggle-link:hover {
+            color: #ff3333;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #cc0000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+    <script>
+        
+        
+        function showContent(page) {
+            document.querySelectorAll(".page").forEach(section => {
+                section.style.display = "none"; // Hide all sections
+            });
+            document.getElementById(page).style.display = "block"; // Show the selected section
+        }
+
+
+
+
+        function validateForm(event) {
+            const age = document.getElementById("age").value;
+            const contact = document.getElementById("contact").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+
+            // Age validation
+            if (parseInt(age, 10) < 18) {
+                alert("You must be 18 years or older to register.");
+                event.preventDefault();
+                return;
+            }
+
+            // Contact number validation
+            const contactRegex = /^\d{10}$/;
+            if (!contactRegex.test(contact)) {
+                alert("Contact number must be exactly 10 digits.");
+                event.preventDefault();
+                return;
+            }
+
+            // Password confirmation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                event.preventDefault();
+                return;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showContent("home");
+
+            const registrationForm = document.querySelector("#registration form");
+            if (registrationForm) {
+                registrationForm.addEventListener("submit", validateForm);
+            }
+        });
+        
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Blood Bank System</h1>
+        <div class="news">
+            <span>"Be a Hero: Blood donation drive coming soon. Register to donate and help save lives in need!"</span>
+        </div>
+    </header>
+
+    <nav>
+        <a href="javascript:void(0)" onclick="showContent('home')">Home</a>
+        <a href="javascript:void(0)" onclick="showContent('about')">About</a>
+        <a href="javascript:void(0)" onclick="showContent('registration')">Registration</a>
+        <a href="javascript:void(0)" onclick="showContent('login')">Login</a>
+        <a href="http://127.0.0.1:3000/dd.html">Contact us</a>
+    </nav>
+
+    <div class="container">
+        <div id="home" class="page">
+            <h2>Welcome to the Blood Bank System</h2>
+            <p>
+                The Blood Bank System is an innovative platform designed to streamline the process of blood donation and transfusion. 
+                This system bridges the gap between blood donors and recipients, ensuring timely access to life-saving resources during emergencies.
+            </p>
+            <div style="margin: 20px auto; max-width: 1000px; text-align: center;">
+                <img src="blood.png" alt="blood donation" style="width: 300px; margin: 50px auto; display: block;">
+            </div>
+            <p>Key features of the system include:</p>
+            <ul style="text-align: left; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                <li><strong>User Registration:</strong> Donors can register their details, including their blood group and contact information, making it easy for recipients to find them.</li>
+                <li><strong>Blood Availability Search:</strong> Hospitals and patients can search for specific blood groups based on availability, ensuring quick response in emergencies.</li>
+                <li><strong>Donation Agreement:</strong> Donors can specify their willingness to donate blood, making the system more transparent and efficient.</li>
+                <li><strong>Secure Access:</strong> Secure login for both donors and recipients to maintain privacy and confidentiality.</li>
+            </ul>
+            <div style="margin-top: 20px; padding: 15px; background-color: #ffe6e6; border-left: 5px solid #cc0000;">
+                <p><strong>Our Mission:</strong> To create a reliable and efficient network for blood donation and transfusion that saves lives and fosters a community of helping hands.</p>
+                <p><strong>Get Started Today:</strong> Join us in this life-saving mission. Whether you're a donor or a recipient, this platform is here to support you every step of the way.</p>
+            </div>
+        </div>
+        
+        
+
+        <div id="about" class="page">
+            <h2>About Blood Donation</h2>
+            <p>Blood donation is a noble act that saves lives. Every drop counts, and knowing blood compatibility can make a huge difference in emergencies.</p>
+            <div style="margin: 20px auto; max-width: 800px; text-align: center;">
+                <img src="blood donation.jpg" alt="blood donation" style="width: 300px; margin: 20px auto;">
+            </div>
+            <p>Here's a compatibility chart to help you understand who can donate and receive blood:</p>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                <thead style="background-color: #cc0000; color: #fff;">
+                    <tr>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Blood Group</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Can Donate To</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Can Receive From</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; text-align: center; background-color: #fff; font-weight: bold;">A+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #fff;">A+, AB+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #fff;">A+, A-, O+, O-</td>
+                    </tr>
+                    <tr style="background-color: #f9f9f9;">
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; text-align: center; background-color: #f9f9f9; font-weight: bold;">B+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #f9f9f9;">B+, AB+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #f9f9f9;">B+, B-, O+, O-</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; text-align: center; background-color: #fff; font-weight: bold;">O+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #fff;">O+, A+, B+, AB+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #fff;">O+, O-</td>
+                    </tr>
+                    <tr style="background-color: #f9f9f9;">
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; text-align: center; background-color: #f9f9f9; font-weight: bold;">AB+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #f9f9f9;">AB+</td>
+                        <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #f9f9f9;">All Blood Groups</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <div style="margin-top: 20px; padding: 10px; background-color: #ffe6e6; border-left: 5px solid #cc0000;">
+                <strong>Tip:</strong> Always consult with medical professionals or your local blood bank for guidance on donating or receiving blood.
+            </div>
+        </div>
+        
+
+        <div id="registration" class="page">
+            <h2>User Registration</h2>
+            <form action="register.php" method="POST" class="form-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <label for="blood_group">Blood Group:</label>
+                <select id="blood_group" name="blood_group" required>
+                    <option>A+</option>
+                    <option>B+</option>
+                    <option>O+</option>
+                    <option>AB+</option>
+                    <option>A-</option>
+                    <option>B-</option>
+                    <option>O-</option>
+                    <option>AB-</option>
+                </select>
+                <label for="donate_agreement">Do you agree to donate blood?</label>
+                <select id="donate_agreement" name="donate_agreement" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <button type="submit">Submit</button>
+            </form>
+            <span class="toggle-link" onclick="showContent('login')">Already have an account? Login here</span>
+        </div>
+        <div id="login" class="page">
+            <h2>User Login</h2>
+            <form action="login.php" method="POST" class="form-container">
+                <label for="login_contact">Contact:</label>
+                <input type="text" id="login_contact" name="contact" required>
+                
+                <label for="login_password">Password:</label>
+                <div style="display: flex; align-items: center;">
+                    <input type="password" id="login_password" name="password" required style="flex: 1; padding: 10px; width: 80%;">
+                    <label for="show_password" style="margin-left: 10px; font-size: 0.9rem;">
+                        <input type="checkbox" id="show_password" onclick="togglePassword()" style="margin-right: 5px;">show
+                    </label>
+                </div>
+                
+                <button type="submit" style="margin-top: 10px;">Login</button>
+            </form>
+            <span class="toggle-link" onclick="showContent('registration')">Don't have an account? Register here</span>
+        </div>
+        
+        <script>
+            // Function to toggle password visibility
+            function togglePassword() {
+                var passwordField = document.getElementById("login_password");
+                var showPasswordCheckbox = document.getElementById("show_password");
+                if (showPasswordCheckbox.checked) {
+                    passwordField.type = "text"; // Show the password in plain text
+                } else {
+                    passwordField.type = "password"; // Mask the password
+                }
+            }
+        </script>
+        
+</div>
+    <footer>
+        <p>&copy; 2024 Blood Bank System. All Rights Reserved.</p>
+        <p>Developed by: <strong>Ranganath K N</strong> | Email: <a href="mailto:ranganathkn554@gmail.com" style="color: white; text-decoration: underline;">ranganathkn554@gmail.com</a></p>
+    </footer>
+</body>
+</html>
+
