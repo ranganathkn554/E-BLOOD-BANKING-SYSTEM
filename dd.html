@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #d6cecd;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container Styling */
+        .contact-container {
+            background-color: #9bbb9d;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Heading Styling */
+        h2 {
+            font-size: 2rem;
+            color: #140e0e;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Contact Info Styling */
+        .contact-info {
+            background-color: #db0a0a;
+            padding: 20px;
+            border-radius: 10px;
+            color: #e2dbdb;
+            text-align: left;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #d6d3d0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Message Styling */
+        .footer-message {
+            font-size: 1rem;
+            color: #c21111;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        
+        <div class="contact-info">
+            <p><strong>Developer Name:</strong> Ranganath K N</p>
+            <p>
+                <strong>Email:</strong> 
+                <a href="mailto:ranganathkn554@gmail.com">ranganathkn554@gmail.com</a>
+            </p>
+        </div>
+
+        <p class="footer-message">
+            Feel free to reach out for queries, feedback, or support. We're here to help!
+        </p>
+    </div>
+
+    <script>
+        function showContent(page) {
+            document.querySelectorAll(".page").forEach(section => {
+                section.style.display = "none"; // Hide all sections
+            });
+            document.getElementById(page).style.display = "block"; // Show the selected section
+        }
+    </script>
+</body>
+</html>
