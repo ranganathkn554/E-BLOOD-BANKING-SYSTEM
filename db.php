@@ -1,24 +1,20 @@
 <?php
-// Database configuration
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "blood_bank"; // Correct database name
+    // Database connection
+    $host = "localhost";
+    $username = "root"; // Replace with your database username
+    $password = ""; // Replace with your database password
+    $dbname = "ebloodbank";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Create connection
+    $conn = new mysqli($host, $username, $password, $dbname);
+    if ($conn) {
+        echo "Database connection successful!";
+    }
+    
 
-// Check connection
-if (!$conn) {
-    error_log("Connection failed: " . mysqli_connect_error()); // Log the error
-    die("Unable to connect to the database. Please try again later."); // Generic error message
-}
-
-// Set character set to UTF-8
-if (!mysqli_set_charset($conn, "utf8")) {
-    error_log("Error loading character set utf8: " . mysqli_error($conn)); // Log charset error
-}
-
-// Connection successful (remove this in production)
-// echo "Connected successfully!";
-?>
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // http://localhost:8080/pv5/index.html
+    // http://localhost:8080/phpmyadmin/index.php?route=/table/sql&db=ebloodbank&table=users
