@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Blood Bank System</title>
     <style>
-        /* General Reset */
+      
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Body Styling */
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(to right, #ffcccc, #ffe6e6);
@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
 
-        /* Header Styling */
+   
         header {
             background-color: #cc0000;
             color: #fff;
@@ -55,7 +55,6 @@
             }
         }
 
-        /* Navigation Bar */
         nav {
             background-color: #cc0000;
             overflow: hidden;
@@ -74,7 +73,7 @@
             background-color: #ff6666;
         }
 
-        /* Main Content */
+        
         .container {
             flex: 1;
             padding: 20px;
@@ -120,7 +119,7 @@ about:blank#blocked
             color: #ff3333;
         }
 
-        /* Footer Styling */
+        
         footer {
             background-color: #cc0000;
             color: white;
@@ -134,9 +133,9 @@ about:blank#blocked
         
         function showContent(page) {
             document.querySelectorAll(".page").forEach(section => {
-                section.style.display = "none"; // Hide all sections
+                section.style.display = "none"; 
             });
-            document.getElementById(page).style.display = "block"; // Show the selected section
+            document.getElementById(page).style.display = "block"; 
         }
 
 
@@ -148,7 +147,7 @@ about:blank#blocked
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirm_password").value;
 
-            // Age validation
+            
             if (parseInt(age, 10) < 18 || parseInt(age, 10) > 65) {
             alert("Your age must be between 18 and 65 years to register.");
             event.preventDefault();
@@ -156,7 +155,7 @@ about:blank#blocked
 }
 
 
-            // Contact number validation
+            
             const contactRegex = /^\d{10}$/;
             if (!contactRegex.test(contact)) {
                 alert("Contact number must be exactly 10 digits.");
@@ -164,7 +163,7 @@ about:blank#blocked
                 return;
             }
 
-            // Password confirmation
+            
             if (password !== confirmPassword) {
                 alert("Passwords do not match. Please try again.");
                 event.preventDefault();
@@ -351,14 +350,14 @@ about:blank#blocked
         </div>
         
         <script>
-            // Function to toggle password visibility
+            
             function togglePassword() {
                 var passwordField = document.getElementById("login_password");
                 var showPasswordCheckbox = document.getElementById("show_password");
                 if (showPasswordCheckbox.checked) {
-                    passwordField.type = "text"; // Show the password in plain text
+                    passwordField.type = "text"; 
                 } else {
-                    passwordField.type = "password"; // Mask the password
+                    passwordField.type = "password"; 
                 }
             }
         </script>
