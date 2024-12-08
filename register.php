@@ -64,12 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Store user details in session
             $_SESSION['user'] = [
                 'name' => $name,
+                'age' => $age,
                 'blood_group' => $blood_group,
                 'contact' => $contact,
+                'donation_eligible' => $donation_eligible,
             ];
 
             // Redirect to the dashboard
-            header("Location: dashboard.php");
+            header("Location: /pv5/dashboard.php");
             exit;
         } else {
             error_log("Database error: " . mysqli_stmt_error($stmt)); // Log the error
