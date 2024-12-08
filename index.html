@@ -149,11 +149,12 @@ about:blank#blocked
             const confirmPassword = document.getElementById("confirm_password").value;
 
             // Age validation
-            if (parseInt(age, 10) < 18) {
-                alert("You must be 18 years or older to register.");
-                event.preventDefault();
-                return;
-            }
+            if (parseInt(age, 10) < 18 || parseInt(age, 10) > 65) {
+            alert("Your age must be between 18 and 65 years to register.");
+            event.preventDefault();
+            return;
+}
+
 
             // Contact number validation
             const contactRegex = /^\d{10}$/;
@@ -184,7 +185,7 @@ about:blank#blocked
 </head>
 <body>
     <header>
-        <h1>Blood Bank System</h1>
+        <h1>E-Blood Bank System</h1>
         <div class="news">
             <span>"Be a Hero: Blood donation drive coming soon. Register to donate and help save lives in need!"</span>
         </div>
@@ -195,7 +196,8 @@ about:blank#blocked
         <a href="javascript:void(0)" onclick="showContent('about')">About</a>
         <a href="javascript:void(0)" onclick="showContent('registration')">Registration</a>
         <a href="javascript:void(0)" onclick="showContent('login')">Login</a>
-        <a href="http://127.0.0.1:3000/dd.html">Contact us</a>
+        <a href="http://localhost:8080/pv5/dd.html">Contact us</a>
+
     </nav>
 
     <div class="container">
@@ -225,11 +227,19 @@ about:blank#blocked
 
         <div id="about" class="page">
             <h2>About Blood Donation</h2>
-            <p>Blood donation is a noble act that saves lives. Every drop counts, and knowing blood compatibility can make a huge difference in emergencies.</p>
+            <p>Blood donation is a noble act that saves countless lives. Every drop counts, and understanding blood compatibility can make a huge difference during emergencies, surgeries, or natural disasters.</p>
+            
             <div style="margin: 20px auto; max-width: 800px; text-align: center;">
-                <img src="blood donation.jpg" alt="blood donation" style="width: 300px; margin: 20px auto;">
+                <img src="blood donation.png" alt="blood donation" style="width: 300px; margin: 20px auto;">
             </div>
-            <p>Here's a compatibility chart to help you understand who can donate and receive blood:</p>
+            
+            <p>Blood donation helps patients with chronic conditions, victims of accidents, or individuals undergoing surgery. According to recent studies, every year, millions of patients depend on donated blood to survive.</p>
+        
+            <h4><u>Blood Compatibility and Its Importance:---</u></h4>
+            <p>Understanding blood group compatibility ensures safe transfusion. Certain blood types can only donate or receive blood from specific groups due to antibodies in the blood. Misunderstanding compatibility could lead to serious complications during transfusions.</p>
+            <p></p>
+            <p><b><u>Here's a compatibility chart to help you understand the relationships between blood groups for donation:</u></b></p>
+            
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
                 <thead style="background-color: #cc0000; color: #fff;">
                     <tr>
@@ -260,17 +270,26 @@ about:blank#blocked
                         <td style="padding: 12px 20px; border: 1px solid #ddd; background-color: #f9f9f9;">All Blood Groups</td>
                     </tr>
                 </tbody>
-                
             </table>
             <div style="margin-top: 20px; padding: 10px; background-color: #ffe6e6; border-left: 5px solid #cc0000;">
-                <strong>Tip:</strong> Always consult with medical professionals or your local blood bank for guidance on donating or receiving blood.
+                <strong>Tip:</strong> Always consult with medical professionals or your local blood bank for accurate guidance on donating or receiving blood. Blood donations are vital in times of natural disasters, accidents, or health crises.
+            </div>
+            <div style="margin-top: 20px; padding: 10px; background-color: #ffe6e6; border-left: 5px solid #cc0000;">
+                <strong>Did You Know?</strong> 
+                <ol style="list-style-type: disc; padding-left: 50px;">
+                    <li>Every 2 seconds, someone needs blood in the United States alone.</li>
+                    <li>O- is the universal donor blood type, while AB+ is the universal plasma donor type.</li>
+                    <li>Blood donations are used for surgeries, cancer treatments, trauma injuries, and more.</li>
+                    <li>Donated blood can only be stored for a limited time, making regular donations essential.</li>
+                </ol>
             </div>
         </div>
+        
         
 
         <div id="registration" class="page">
             <h2>User Registration</h2>
-            <form action="register.php" method="POST" class="form-container">
+            <form action="/pv5/register.php" method="POST" class="form-container">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="age">Age:</label>
@@ -291,8 +310,19 @@ about:blank#blocked
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
-                <label for="contact">Contact:</label>
-                <input type="text" id="contact" name="contact" required>
+                <div style="margin-bottom: 20px;">
+    <label for="contact">Contact:</label>
+    <div style="display: flex; align-items: center;">
+        <span style="padding: 10px; background-color: #e6e6e6; border: 1px solid #ccc; border-right: none; border-radius: 5px 0 0 5px;">
+            +91
+        </span>
+        <input type="text" id="contact" name="contact" required 
+               style="flex: 1; padding: 10px; border: 1px solid #ccc; border-left: none; border-radius: 0 5px 5px 0;"
+               pattern="[0-9]{10}" placeholder="Enter your 10-digit phone number">
+    </div>
+    <small style="color: #666; font-size: 0.9em;">* Enter a 10-digit phone number without country code</small>
+</div>
+
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <label for="confirm_password">Confirm Password:</label>
