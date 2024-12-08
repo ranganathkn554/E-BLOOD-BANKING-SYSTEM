@@ -1,7 +1,7 @@
 <?php
-session_start(); // Start session to store user data
+session_start(); 
 
-include 'db_connection.php'; // Include your database connection script
+include 'db_connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form inputs
@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Hash the password
+    
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert user into the database using a prepared statement
+    
     $sql = "INSERT INTO users (name, age, blood_group, donation_eligible, contact, password) 
             VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "sissss", $name, $age, $blood_group, $donate_agreement, $contact, $hashed_password);
 
         if (mysqli_stmt_execute($stmt)) {
-            // Store user details in session
+          
             $_SESSION['user'] = [
                 'name' => $name,
                 'age' => $age,
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'donation_eligible' => $donation_eligible,
             ];
 
-            // Redirect to the dashboard
+            
             header("Location: /pv5/dashboard.php");
             exit;
         } else {
@@ -78,12 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "An error occurred. Please try again later.";
         }
 
-        mysqli_stmt_close($stmt); // Close statement
+        mysqli_stmt_close($stmt);
     } else {
         error_log("Failed to prepare the statement: " . mysqli_error($conn));
         echo "An error occurred. Please try again later.";
     }
 
-    mysqli_close($conn); // Close database connection
+    mysqli_close($conn); 
 }
 ?>
